@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Frontend</title>
+</head>
+<body>
+    <h1>Hello from Frontend!</h1>
+    <button onclick="callApi()">Call API</button>
+    <p id="apiResponse"></p>
+
+    <script>
+        function callApi() {
+            fetch('/api/hello')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('apiResponse').innerText = data.message;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+    </script>
+</body>
+</html>
