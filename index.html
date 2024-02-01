@@ -9,13 +9,17 @@
     <h1>Hello from Frontend!</h1>
     <button onclick="callApi()">Call API</button>
     <p id="apiResponse"></p>
+    <img id="chartImage" src="" alt="Chart">
 
     <script>
         function callApi() {
-            fetch('/api/hello')
+            fetch('/api/generate_chart')
                 .then(response => response.json())
                 .then(data => {
                     document.getElementById('apiResponse').innerText = data.message;
+
+                    // Set the source of the image to the base64-encoded chart data
+                    document.getElementById('chartImage').src = 'data:image/png;base64,' + data.chart_data;
                 })
                 .catch(error => {
                     console.error('Error:', error);
